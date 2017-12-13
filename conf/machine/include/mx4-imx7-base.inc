@@ -28,3 +28,8 @@ UBI_VOLNAME = "rootfs"
 
 SERIAL_CONSOLE ?= "115200 ttymxc0"
 
+TORADEX_PRODUCT_IDS = "0032 0033"
+TORADEX_PRODUCT_IDS[0032] = "imx7s-colibri-eval-v3.dtb"
+TORADEX_PRODUCT_IDS[0033] = "imx7d-colibri-eval-v3.dtb"
+TORADEX_FLASH_TYPE = "rawnand"
+
