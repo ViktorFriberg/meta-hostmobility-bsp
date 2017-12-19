@@ -18,7 +18,7 @@ COMPATIBLE_MACHINE = "(mx4-v61-imx7)"
 
 do_uboot_mkimage() {
     cd ${B}
-    cat ${KERNEL_OUTPUT_DIR}/zImage ${KERNEL_OUTPUT_DIR}/dts/${KERNEL_DEVICETREE} > combined-image
+    cat ${KERNEL_OUTPUT_DIR}/zImage ${KERNEL_OUTPUT_DIR}/zImage-${KERNEL_DEVICETREE} > combined-image
     mkimage -A arm -C none -a ${UBOOT_ENTRYPOINT} -e ${UBOOT_ENTRYPOINT} -T kernel -d combined-image ${KERNEL_OUTPUT_DIR}/uImage
 }
 
