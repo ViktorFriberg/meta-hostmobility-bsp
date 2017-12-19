@@ -6,7 +6,7 @@ include conf/machine/include/imx-base.inc
 include conf/machine/include/tune-cortexa7.inc
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-hostmobility-imx7"
-KERNEL_IMAGETYPE = "zImage"
+KERNEL_IMAGETYPE = "uImage"
 
 # We store kernel on seperate MTD partition so no need to deploy to rootfs.
 RDEPENDS_kernel-base = ""
