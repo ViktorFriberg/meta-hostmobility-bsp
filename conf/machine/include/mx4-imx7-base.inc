@@ -5,6 +5,8 @@ MACHINEOVERRIDES =. "mx7:mx7d:"
 include conf/machine/include/imx-base.inc
 include conf/machine/include/tune-cortexa7.inc
 
+UBOOT_ENTRYPOINT = "0x00008000"
+
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-hostmobility-imx7"
 KERNEL_IMAGETYPE = "uImage"
 
