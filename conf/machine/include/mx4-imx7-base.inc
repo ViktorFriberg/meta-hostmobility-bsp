@@ -8,7 +8,7 @@ include conf/machine/include/tune-cortexa7.inc
 UBOOT_ENTRYPOINT = "0x00008000"
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-hostmobility-imx7"
-KERNEL_IMAGETYPE = "uImage"
+KERNEL_IMAGETYPE = "zImage"
 
 # We store kernel on seperate MTD partition so no need to deploy to rootfs.
 RDEPENDS_kernel-base = ""
