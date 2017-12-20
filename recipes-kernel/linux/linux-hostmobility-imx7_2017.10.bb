@@ -10,7 +10,7 @@ KERNEL_MODULE_AUTOLOAD += "${@bb.utils.contains('COMBINED_FEATURES', 'usbgadget'
 
 LOCALVERSION = "-${SRCBRANCH}"
 SRCBRANCH = "mx4-bsp-2.0.x-IMX7"
-SRCREV = "b93b6f4f3011fd7b0936627a7bbcd88212f6f9e5"
+SRCREV = "cc798791dffa2a4cc9716207e42e1cb2f81acac7"
 DEPENDS += "lzop-native bc-native u-boot-mkimage-native"
 COMPATIBLE_MACHINE = "(mx4-v61-imx7)"
 
