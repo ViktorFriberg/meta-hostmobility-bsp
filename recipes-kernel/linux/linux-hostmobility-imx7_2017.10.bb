@@ -5,7 +5,8 @@ SUMMARY = "Linux kernel for MX-4 products using Toradex Colibri VFxx COMs"
 
 SRC_URI = "git://github.com/viktorfriberg/linux-toradex.git;protocol=https;branch=${SRCBRANCH} \
            file://defconfig \
-           file://git/arch/arm/boot/dts/imx7d-hm.dts"
+           file://git/arch/arm/boot/dts/imx7d-hm.dts \
+           file://git/arch/arm/boot/dts/Makefile"
 
 KERNEL_MODULE_AUTOLOAD += "${@bb.utils.contains('COMBINED_FEATURES', 'usbgadget', ' libcomposite', '',d)}"
 
