@@ -24,14 +24,8 @@ UBOOT_MAKE_TARGET = "u-boot-nand.imx"
 IMAGE_FSTYPES = "sdcard.gz tar.xz ubifs"
 
 # Enable free --space-fixup (-F) by default, this allows DFU updates
-MKUBIFS_ARGS = " -c 8112 -e 124KiB -m 2KiB -F"
+MKUBIFS_ARGS = " -c 2047 -e 124KiB -m 2KiB -F"
 UBINIZE_ARGS = " -p 128KiB -m 2048 -s 2048"
 UBI_VOLNAME = "rootfs"
 
 SERIAL_CONSOLE ?= "115200 ttymxc0"
-
-TORADEX_PRODUCT_IDS = "0032 0033"
-TORADEX_PRODUCT_IDS[0032] = "imx7s-colibri-eval-v3.dtb"
-TORADEX_PRODUCT_IDS[0033] = "imx7d-colibri-eval-v3.dtb"
-TORADEX_FLASH_TYPE = "rawnand"
-
