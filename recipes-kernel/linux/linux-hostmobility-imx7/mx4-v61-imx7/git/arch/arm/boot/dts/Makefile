@@ -457,6 +457,7 @@ dtb-$(CONFIG_SOC_IMX7D) += \
 	imx7d-colibri-emmc-aster.dtb \
 	imx7s-colibri-aster.dtb \
 	imx7d-colibri-eval-v3.dtb \
+	imx7d-hm.dtb \
 	imx7d-colibri-emmc-eval-v3.dtb \
 	imx7s-colibri-eval-v3.dtb \
 	imx7d-sdb.dtb \
