@@ -353,11 +353,76 @@
 };
 
 &iomuxc {
-	imx7d-eval-v3 {
-		pinctrl_gpiotouch: touchgpios {
+	imx7d-colibri {
+		pinctrl_gpiokeys: gpiokeys {
 			fsl,pins = <
-				MX7D_PAD_GPIO1_IO09__GPIO1_IO9		0x74
-				MX7D_PAD_GPIO1_IO10__GPIO1_IO10		0x14
+			/*
+				Input Voltage Low
+				SODIMM pin 133
+				Config: 0x4 = 0000100
+				100kOhm pull down 	(00)
+				pull disabled 		(0)
+				CMOS input 			(0)
+				slow slew rate 		(1)
+				low drive strength 	(00)
+			*/
+				MX7D_PAD_EPDC_GDRL__GPIO2_IO26			0x4 /*INPUT-VOLTAGE-LOW*/
+ 			>;
+		};
+		pinctrl_can_int: can_int {
+			fsl,pins = <
+			/*
+				MCP2515-INT
+				SODIMM pin 27
+				Config: 0x7C = 1111100
+				100kOhm pull up 		(11)
+				pull enabled 			(1)
+				schmitt trigger input 	(1)
+				slow slew rate 			(1)
+				low drive strength 		(00)
+			*/
+				MX7D_PAD_SAI2_TX_BCLK__GPIO6_IO20		0x7C /*MCP2515-INT*/
+			>;
+		};
+		pintctrl_acc: acc_int1 {
+			fsl,pins = <
+			/*
+				ACC-INT1
+				SODIMM pin 106
+				Config: 0x54 = 1010100
+				47kOhm pull up 		(10)
+				pull enabled 		(1)
+				CMOS input 			(0)
+				slow slew rate 		(1)
+				low drive strength 	(00)
+			*/
+				VF610_PAD_PTD31__GPIO_63    			0x54 /*ACC-INT1*/
+			>;
+		};
+		pinctrl_mx4_io_int: mx4_io_int {
+			fsl,pins = <
+			/*
+				Data ready PIC
+				SODIMM pin 37
+				Config: 0x4 = 0000100
+				100kOhm pull down 	(00)
+				pull disabled 		(0)
+				CMOS input 			(0)
+				slow slew rate 		(1)
+				low drive strength 	(00)
+			*/
+				MX7D_PAD_LPSR_GPIO1_IO06__GPIO1_IO6		0x4 /*DATA-READY-PIC*/
+			/*
+				Wake up CPU
+				SODIMM pin 45
+				Config: 0x4 = 0000100
+				100kOhm pull down 	(00)
+				pull disabled 		(0)
+				CMOS input 			(0)
+				slow slew rate 		(1)
+				low drive strength 	(00)
+			*/
+				MX7D_PAD_LPSR_GPIO1_IO01__GPIO1_IO1		0x4 /*WAKE-UP-CPU*/
 			>;
 		};
 	};
