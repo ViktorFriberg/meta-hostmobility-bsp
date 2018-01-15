@@ -14,12 +14,12 @@
 
 	clocks {
 		/* fixed crystal dedicated to mpc258x */
-		clk16m: clk@1 {
+		clk24m: clk@1 {
 			compatible = "fixed-clock";
 			reg=<1>;
 			#clock-cells = <0>;
-			clock-frequency = <16000000>;
-			clock-output-names = "clk16m";
+			clock-frequency = <24000000>;
+			clock-output-names = "clk24m";
 		};
 	};
 
@@ -93,46 +93,38 @@
 &ecspi3 {
 	status = "okay";
 
-	mcp258x0: mcp258x@0 {
-		compatible = "microchip,mcp2515";
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_can_int>;
+	mx4_io_spi: dspi@0 {
+		compatible = "mx4_io_spi";
 		reg = <0>;
-		clocks = <&clk16m>;
-		interrupt-parent = <&gpio5>;
-		interrupts = <2 IRQ_TYPE_EDGE_FALLING>;
-		spi-max-frequency = <10000000>;
-		status = "disabled";
+		spi-max-frequency = <8000000>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pinctrl_mx4_io_int>;
+ 		interrupt-parent = <&gpio0>;
+ 		interrupts = <6 IRQ_TYPE_EDGE_RISING>;
+ 		gpios = <&gpio0 1 IRQ_TYPE_EDGE_RISING>;
+ 		spi-cpha;
 	};
 
-	spidev0: spidev@0 {
+	mx4_pic: dspi@1 {
 		compatible = "toradex,evalspi";
-		reg = <0>;
-		spi-max-frequency = <23000000>;
-		status = "okay";
+		reg = <1>;
+		spi-max-frequency = <50000000>;
 	};
 };
 
 &ecspi1 {
 	status = "okay";
 
-	mcp258x0: mcp258x@0 {
-		compatible = "microchip,mcp2515";
+	mcp2515can: can@1 {
+		compatible = "microchip,mcp2515"; //driver to use name, defined in the kernel driver source code module for mcp2515.
 		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_can_int>;
-		reg = <0>;
-		clocks = <&clk16m>;
-		interrupt-parent = <&gpio5>;
-		interrupts = <2 IRQ_TYPE_EDGE_FALLING>;
-		spi-max-frequency = <10000000>;
-		status = "okay";
-	};
-
-	spidev0: spidev@0 {
-		compatible = "toradex,evalspi";
-		reg = <0>;
-		spi-max-frequency = <23000000>;
-		status = "disabled";
+		pinctrl-0 = <&pinctrl_can_int>; //Information for the initialization phase of linux. Pin configurations.
+		reg = <0>; //chip select pin to use when using this SPI functinality, not that important in our case
+		clocks = <&clk24m>; //24Mhz clock defined line 17
+		interrupt-parent = <&gpio5>; //MX7D_PAD_SAI2_TX_BCLK__GPIO6_IO20 means gpio group6(1-X). Translated to group5(0-X)
+		interrupts = <20 IRQ_TYPE_EDGE_FALLING>; //20 is the GPIO group pin nr. so 20
+		spi-max-frequency = <10000000>; //Self-explanatory
+		status = "okay"; //overrides the "disabled" that typically is defined in the imx7s.dtsi for the ecspi1 
 	};
 };
 
