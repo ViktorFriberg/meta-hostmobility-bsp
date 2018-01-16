@@ -96,7 +96,7 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_ecspi3 &pinctrl_ecspi3_cs>;
 	
-	mx4_io_spi: ecspi@0 {
+	mx4_io_spi: spidev@0 {
 		compatible = "mx4_io_spi";
 		reg = <0>;
 		spi-max-frequency = <8000000>;
@@ -109,10 +109,10 @@
 		status = "okay";
 	};
 
-	mx4_pic: ecspi@1 {
+	mx4_pic: spidev@1 {
 		compatible = "toradex,evalspi";
 		reg = <1>;
-		spi-max-frequency = <50000000>;
+		spi-max-frequency = <23000000>;
 		status = "okay";
 	};
 };
