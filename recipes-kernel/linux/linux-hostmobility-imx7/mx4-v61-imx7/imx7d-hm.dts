@@ -8,10 +8,10 @@
  */
 
 /dts-v1/;
-lude "imx7d-colibri.dtsi"
+#include "imx7d-colibri.dtsi"
 #include "imx7-mx4-v61.dtsi"
 
- {
+/ {
 
 	model = "Toradex Colibri iMX7D on Colibri Evaluation Board V3";
 	compatible = "hostmobility,imx7d-mx4_v61", "hostmobility,imx7d-mx4_v61", "fsl,imx7d";
@@ -20,7 +20,6 @@ lude "imx7d-colibri.dtsi"
 		bootargs = "ubi.mtd=ubi root=ubi0:rootfs rw rootfstype=ubifs ubi.fm_autoconvert=1 mtdparts=gpmi-nand:512k(mx7-bcb),1536k(u-boot1)ro,1536k(u-boot2)ro,512k(u-boot-env),8192k(kernel),-(ubi) console=ttymxc0,115200n8 consoleblank=0 viktor=rocks";
 	};
 
-	asjdghasdbasnbdasmnb
 };
 
 &usbotg2 {

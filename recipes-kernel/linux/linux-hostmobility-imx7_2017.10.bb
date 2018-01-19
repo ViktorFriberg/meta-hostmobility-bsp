@@ -5,10 +5,10 @@ SUMMARY = "Linux kernel for MX-4 products using Toradex Colibri VFxx COMs"
 
 SRC_URI = "git://github.com/viktorfriberg/linux-toradex.git;protocol=https;branch=${SRCBRANCH} \
            file://defconfig \
-           file://git/arch/arm/boot/dts/*.dts \
-           file://git/arch/arm/boot/dts/*.dtsi \
-           file://git/arch/arm/boot/dts/*.h \
-           file://git/arch/arm/boot/dts/Makefile"
+           file://*.dts \
+           file://*.dtsi \
+           file://*.h \
+           file://Makefile"
 
 KERNEL_MODULE_AUTOLOAD += "${@bb.utils.contains('COMBINED_FEATURES', 'usbgadget', ' libcomposite', '',d)}"
 
@@ -19,6 +19,13 @@ DEPENDS += "lzop-native bc-native u-boot-mkimage-native"
 COMPATIBLE_MACHINE = "(mx4-v61-imx7)"
 
 # We use CONFIG_ARM_APPENDED_DTB=y and below shall take care of that
+
+do_configure_prepend() {
+    install -m 0644 ${WORKDIR}/*.dts ${S}/arch/arm/boot/dts/
+    install -m 0644 ${WORKDIR}/*.dtsi ${S}/arch/arm/boot/dts/
+    install -m 0644 ${WORKDIR}/*.h ${S}/arch/arm/boot/dts/
+    install -m 0644 ${WORKDIR}/Makefile ${S}/arch/arm/boot/dts/
+}
 
 do_uboot_mkimage() {
     cd ${B}
