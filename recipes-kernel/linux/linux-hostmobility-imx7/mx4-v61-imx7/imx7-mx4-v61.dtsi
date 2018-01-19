@@ -378,21 +378,21 @@
 				MX7D_PAD_SAI2_TX_BCLK__GPIO6_IO20		0x7C /*MCP2515-INT*/
 			>;
 		};
-		pintctrl_acc: acc_int1 {
-			fsl,pins = <
-			/*
-				ACC-INT1
-				SODIMM pin 106
-				Config: 0x54 = 1010100
-				47kOhm pull up 		(10)
-				pull enabled 		(1)
-				CMOS input 			(0)
-				slow slew rate 		(1)
-				low drive strength 	(00)
-			*/
-				VF610_PAD_PTD31__GPIO_63    			0x54 /*ACC-INT1*/
-			>;
-		};
+		//pintctrl_acc: acc_int1 {
+		//	fsl,pins = <
+		//	/*
+		//		ACC-INT1
+		//		SODIMM pin 106
+		//		Config: 0x54 = 1010100
+		//		47kOhm pull up 		(10)
+		//		pull enabled 		(1)
+		//		CMOS input 			(0)
+		//		slow slew rate 		(1)
+		//		low drive strength 	(00)
+		//	*/
+		//		VF610_PAD_PTD31__GPIO_63    			0x54 /*ACC-INT1*/
+		//	>;
+		//};
 		pinctrl_mx4_io_int: mx4_io_int {
 			fsl,pins = <
 			/*
