@@ -20,7 +20,7 @@ COMPATIBLE_MACHINE = "(mx4-v61-imx7)"
 
 # We use CONFIG_ARM_APPENDED_DTB=y and below shall take care of that
 
-do_compile_prepend() {
+do_configure_append() {
     install -m 0644 ${WORKDIR}/*.dts ${S}/arch/arm/boot/dts/
     install -m 0644 ${WORKDIR}/*.dtsi ${S}/arch/arm/boot/dts/
     install -m 0644 ${WORKDIR}/*.h ${S}/arch/arm/boot/dts/
