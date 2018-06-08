@@ -9,6 +9,8 @@ LOCALVERSION = " ${SRCBRANCH}"
 SRCREV = "e4a409d47db1f62a8deb8a417dc6afbec6f2c81f"
 SRCBRANCH = "mx4-bsp-2.0.x-IMX7"
 
+COMPATIBLE_MACHINE = "(mx4-v61-imx7)"
+
 DEFAULT_PREFERENCE = "1"
 
 # require u-boot-dtb-tegra.bin to be used
